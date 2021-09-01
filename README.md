@@ -3,29 +3,30 @@ I'm going to build a project that is a place for musicians and bands to show thi
 Users can sign up or sign in. Once signed in you can create a band with a name, members, description. Bands can add songs, song posts can be liked and commented on
 From the dashboard, you can see your bands and from the band page, you can see the songs
 Solo Project Requirements
-[]Log and Reg with validations
 
-- users can log in or create an account if they dont already have one
-  []User can CREATE object to db
-- user can create Bands - upload songs for bands
-  []User can READ obj retrieved from db
-  []User may like, fave, rsvp (many to many)
-- bands and individual songs can be liked
-  []User may EDIT posted data
-- once band or song is created, info about it can be edited
-  []User may DELETE posted data
-- once band or song is created, it can be deleted
-  []Application includes protected route (user must be in session to view)
-- user must be signed in to create bands/songs, and interact with content
-  []Application features static content(CSS, images, JS,)
-
-- styled to look cute
-  []Created data must be validated (no past events, wall posts must have content, no duplicates) - user name / email cannot be duplicated,
+- []Log and Reg with validations
+  - users can log in or create an account if they dont already have one
+- []User can CREATE object to db
+  - user can create Bands - upload songs for bands
+    []User can READ obj retrieved from db
+    []User may like, fave, rsvp (many to many)
+  - bands and individual songs can be liked
+- []User may EDIT posted data
+  - once band or song is created, info about it can be edited
+- []User may DELETE posted data
+  - once band or song is created, it can be deleted
+- []Application includes protected route (user must be in session to view)
+  - user must be signed in to create bands/songs, and interact with content
+- []Application features static content(CSS, images, JS,)
+  - styled to look cute
+- []Created data must be validated (no past events, wall posts must have content, no duplicates)
+  - user name / email cannot be duplicated,
 
 Bonus reqs
-[]application is responsive
--probably will do this at somepoint but maybe not in time for a better grade
-[]app is publicly deployed
-[]file upload
--users will be able to upload .wav or .mp3 of song
-[]app features and API - going to try and include music theory api that i found but going to get all the other required stuff working first
+
+- []application is responsive
+  - probably will do this at somepoint but maybe not in time for a better grade
+- []app is publicly deployed
+- []file upload
+  - users will be able to upload .wav or .mp3 of song
+- []app features and API - going to try and include music theory api that i found but going to get all the other required stuff working first
