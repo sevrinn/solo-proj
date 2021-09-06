@@ -1,5 +1,8 @@
-const mongoose = requires("mongoose");
+//require mongoose
+const mongoose = require("mongoose");
+//create dbName
 const dbName = process.env.DB_NAME;
+
 //connect to mongoDB server
 mongoose
   .connect("mongodb://localhost/" + dbName, {
@@ -11,6 +14,7 @@ mongoose
   })
   .catch((err) => {
     console.log(
-      "There was an error connecting to the " + dbName + " database!"
+      "There was an error connecting to the " + dbName + " database!",
+      err
     );
   });

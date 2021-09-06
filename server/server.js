@@ -20,10 +20,11 @@ app.use(
 //configure server to accept and update cookies
 
 //configure mongoose to connect
-
+require("./config/mongoose.config");
 //add routes to listen
-// const bandRoutes = require("./routes/band.routes");
-// bandRoutes(app);
+const bandRoutes = require("./routes/band.routes");
+bandRoutes(app);
+
 //set server listening
 app.listen(port, () => {
   console.log("Listening on port " + port);
