@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Router } from "@reach/router";
+import AllBands from "./components/AllBands";
+import CreateBand from "./components/CreateBand";
+// import DeleteBand from "./components/DeleteBand";
+import EditBand from "./components/EditBand";
+import BandDetails from "./components/BandDetails";
+import "./App.css";
+import DeleteBand from "./components/DeleteBand";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Musicians App</h1>
+      <Router>
+        <AllBands default path="/bands" />
+        <CreateBand path="/bands/new" />
+        <BandDetails path="/bands/:id" />
+        <EditBand path="/bands/:id/edit" />
+      </Router>
     </div>
   );
 }
