@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 //add cors/ ability to use credentials with cookies
 app.use(
   cors({
+    origin: "http://localhost:3000",
     //add cookie credentials in here
   })
 );

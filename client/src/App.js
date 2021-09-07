@@ -1,16 +1,18 @@
+import React from "react";
+import "./App.css";
 import { Router } from "@reach/router";
 import AllBands from "./components/AllBands";
 import CreateBand from "./components/CreateBand";
 // import DeleteBand from "./components/DeleteBand";
 import EditBand from "./components/EditBand";
 import BandDetails from "./components/BandDetails";
-import "./App.css";
-import DeleteBand from "./components/DeleteBand";
+import Header from "./views/Header";
+// import DeleteBand from "./components/DeleteBand";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Musicians App</h1>
+    <div className="p-5 h-screen flex items-start justify-center md:container items-center flex-col">
+      <Header />
       <Router>
         <AllBands default path="/bands" />
         <CreateBand path="/bands/new" />
