@@ -6,12 +6,13 @@ import CreateBand from "./components/CreateBand";
 // import DeleteBand from "./components/DeleteBand";
 import EditBand from "./components/EditBand";
 import BandDetails from "./components/BandDetails";
-import Header from "./views/Header";
+import Header from "./components/Header";
 // import DeleteBand from "./components/DeleteBand";
 
 function App() {
   return (
     <div className="p-5 h-screen flex items-start justify-center md:container items-center flex-col">
+    <h1 className="text-purple-900 text-4xl font-extrabold">Musicians App</h1>
       <Header />
       <Router>
         <AllBands default path="/bands" />
