@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../App.css";
 import { Link, navigate } from "@reach/router";
-import BandDetails from "./BandDetails";
+import DeleteBand from "./DeleteBand";
 
 const AllBands = (props) => {
   const [allBands, setAllBands] = useState([]);
@@ -18,6 +18,16 @@ const AllBands = (props) => {
         console.log(err);
       });
   }, []);
+
+  //remove the restaurant object from our array AFTER it is successfully deleted from backend server/ mongoDB
+  const updateAfterDelete = (deletedBandId) => {
+    let filteredBandArray = allBands.filter((bandObj) => {
+      //if we return true, then obj becomes part of new array
+      //if we return false object is skipped in then new array
+      return bandObj._id !== deletedBandId;
+    })
+    setAllBands(filteredBandArray);
+  }
   return (
     <div className="bg-gradient-to-b from-purple-100 to-purple-200 shadow-lg p-10 mt-10 rounded-xl">
       <h2 className="mb-5 text-purple-900 text-3xl font-extrabold">Your Bands</h2>
@@ -30,6 +40,7 @@ const AllBands = (props) => {
           <Link className="underline text-purple-900 text-lg font-medium" to={"/bands/" + band._id}>
             {band.bandName}
           </Link>
+          <DeleteBand bandId={band._id} afterDelete={updateAfterDelete}/>
         </div>
       ))}
       
