@@ -6,12 +6,16 @@ Solo Project Requirements
 
 - []Log and Reg with validations
   - users can log in or create an account if they dont already have one
-- []User can CREATE object to db
-  - user can create Bands - upload songs for bands
-    []User can READ obj retrieved from db
+- [x]User can CREATE object to db
+  - [x]user can create Bands linked to user
+    - []user can create a song linked to a band
+- [x]User can READ obj retrieved from db
+  - [x]User can view bands in a list
+    - []User can view songs in a list
+  - [x]User can view band details individually
     []User may like, fave, rsvp (many to many)
   - bands and individual songs can be liked
-- []User may EDIT posted data
+- [x]User may EDIT posted data
   - once band or song is created, info about it can be edited
 - []User may DELETE posted data
   - once band or song is created, it can be deleted
