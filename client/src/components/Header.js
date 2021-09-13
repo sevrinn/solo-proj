@@ -22,7 +22,7 @@ const Header = (props) => {
     });
   };
   return (
-    <div className="flex p-10">
+    <div className="flex p-5">
       
       <div className="flex">
         <Link

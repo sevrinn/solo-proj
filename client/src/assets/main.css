@@ -562,6 +562,11 @@ video {
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 }
 
+h1 {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .container {
   width: 100%;
 }
