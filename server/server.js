@@ -5,6 +5,8 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+
+const cookieParser = require("cookie-parser");
 //declare port (which is stored in the .env file)
 const port = process.env.PORT;
 
@@ -14,12 +16,12 @@ app.use(express.urlencoded({ extended: true }));
 //add cors/ ability to use credentials with cookies
 app.use(
   cors({
-    origin: "http://localhost:3000",
-    //add cookie credentials in here
+    credentials: true,
+    origin: process.env.CLIENT_URL,
   })
 );
 //configure server to accept and update cookies
-
+app.use(cookieParser());
 //configure mongoose to connect
 require("./config/mongoose.config");
 //add routes to listen
