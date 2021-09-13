@@ -36,10 +36,10 @@ const AllBands = (props) => {
         //otherwise show this message?? i dont know if i can do this in time
       }
       {allBands.map((band, index) => (
-        <div key={index}>
+        <div key={index} className="flex">
           <Link className="underline text-purple-900 text-lg font-medium" to={"/bands/" + band._id}>
             {band.bandName}
-          </Link>
+          </Link> 
           <DeleteBand bandId={band._id} afterDelete={updateAfterDelete}/>
         </div>
       ))}

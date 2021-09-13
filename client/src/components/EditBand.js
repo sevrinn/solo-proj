@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../App.css";
 import { Link, navigate } from "@reach/router";
+import DeleteBand from "./DeleteBand";
 
 const EditBand = (props) => {
   const { id } = props;
@@ -24,6 +25,9 @@ const EditBand = (props) => {
     });
   }, []);
 
+  const redirectAfterDelete = () => {
+    navigate("/restaurats");
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -84,6 +88,7 @@ const EditBand = (props) => {
       </form>
       <div className="flex align-center">
           <button onClick={handleSubmit}>Update</button>
+          <DeleteBand bandId={id} afterDelete={redirectAfterDelete}/>
         </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, navigate } from "@reach/router";
+import { TiDelete } from "react-icons/ti";
+
 
 const DeleteBand = (props) => {
   const { bandId, afterDelete } = props;
@@ -12,7 +14,7 @@ const DeleteBand = (props) => {
       .then((res)=> {
         console.log("band deleted: " +bandId)
         console.log(res.data)
-        //run the specific code for after the delte is successful
+        //run the specific code for after the delete is successful
         afterDelete(bandId);
       })
       .catch((err)=> {
@@ -21,8 +23,8 @@ const DeleteBand = (props) => {
   }
 
   return (
-  <button onClick={(e)=>deleteHandler()}>
-    Delete Band
+  <button onClick={(e)=>deleteHandler()} className="flex items-center text-red-900">
+    <TiDelete/> Delete
   </button>);
 };
 
