@@ -1,4 +1,6 @@
 const User = require("../models/user.model");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   register: (req, res) => {
@@ -20,7 +22,51 @@ module.exports = {
     });
   },
   //login
-  
+  login: (req, res) => {
+    User.findOne({email: req.body.email })
+    .then((userRecord) => {
+      if (userRecord == null) {
+        
+        res.status(400).json({ message: "Invalid Log in attempt"})
+      } else {
+        //email was found
+        // compare the address given to us in the request with the one stored in the DB
+        bcrypt.compare(req.body.password, userRecord.password)
+          .then((isPasswordValid) => {
+            if(isPasswordValid) {
+              console.log("Password is valid");
+              res.cookie("usertoken", //name of the cookie
+                jwt.sign({
+                  //payload is the data i want to save
+                  user_id: userRecord._id,
+                  email: userRecord.email
+                },
+                process.env.SECRET_KEY, {
+                  // configuration settins for this cookie
+                  httpOnly: true,
+                  expires: new Date(Date.now() + 90000000)
+                })
+
+                ).json({
+                  message: "Successfully logged in",
+                  userLoggedIn: userRecord.username
+                })
+              } else {
+                //passwords didnt match
+                res.status(400).json({ message: "Invalid Log in attempt"})
+              }
+            })
+            .catch((err) => {
+              console.log("error with compare pwds")
+              res.status(400).json({message: "invalid login attempt"});
+            })
+      }
+    })
+    .catch((err) => {
+      console.log("error with find one")
+      res.status(400).json({message: "invalid login attempt"});
+    })
+  }
 }
 
 //get All Users
