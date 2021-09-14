@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Link, navigate } from "@reach/router";
 import axios from "axios";
-import { navigate } from '@reach/router';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -52,8 +53,9 @@ const Login = () => {
       
         
         <div className="flex align-center">
-          <button type="submit">Sign In</button>
+          <button className="text-purple-900 text-lg font-medium text-center bg-gradient-to-b from-purple-300 to-purple-400 shadow-lg p-3 mt-5 rounded-xl flex flex-col align-center justify-center w-full" type="submit">Sign In</button>
         </div>
+        <p>Not a member yet? Register <Link to={"/register/"}>HERE</Link></p>
       </form>
     </div>
   );

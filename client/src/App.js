@@ -9,15 +9,18 @@ import BandDetails from "./components/BandDetails";
 import Header from "./components/Header";
 import RegisterUser from "./components/RegisterUser";
 import Login from "./components/Login";
+import LandingPage from "./views/LandingPage";
 // import DeleteBand from "./components/DeleteBand";
 
 function App() {
   return (
     <div className="p-5 h-screen flex md:container items-center flex-col mx-auto">
     <h1 className="text-purple-900 text-4xl font-extrabold">Musicians App</h1>
-      <Header />
+      {/* <Header /> */}
       <Router>
-        <Login path="/login" />
+        <LandingPage path="/login" />
+          
+        
         <RegisterUser path="/register" />
         <AllBands default path="/bands" />
         <CreateBand path="/bands/new" />
