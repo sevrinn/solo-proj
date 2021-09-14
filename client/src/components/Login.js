@@ -15,7 +15,7 @@ const Login = () => {
       password: password,
     },
     {
-      //this iwll force sending of credentias/ cookies 
+      //this will force sending of credentias/ cookies 
       withCredentials: true
     })
     .then((res)=> {
@@ -26,7 +26,11 @@ const Login = () => {
     })
     .catch((err)=> {
       console.log(err.response);
-      setErrors(err.response.data.message);
+      if (err.response.data.errors) {
+        setErrors(err.response.data.message);
+      }
+      
+    
     });
   };
 

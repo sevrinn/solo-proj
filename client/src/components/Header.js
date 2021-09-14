@@ -15,7 +15,7 @@ const Header = (props) => {
     })
     .then((res)=> {
       console.log(res.data);
-      navigate("/register");
+      navigate("/login");
     })
     .catch(err=> {
       console.log(err);

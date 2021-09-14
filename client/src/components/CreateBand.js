@@ -3,8 +3,12 @@ import axios from "axios";
 import "../App.css";
 import { Link, navigate } from "@reach/router";
 import Header from "./Header";
+import io from 'socket.io-client';
 
 const CreateBand = (props) => {
+  //we will never change the socket state with the setter so,
+  // we can leave it out
+  const [socket] = useState(()=> io(":8000"));
   const [bandName, setBandName] = useState("");
   const [genre, setGenre] = useState("");
   const [description, setDescription] = useState("");
@@ -24,20 +28,33 @@ const CreateBand = (props) => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
-        navigate("/bands/" + res.data._id);
+        console.log(res.data);
+        if (res.data.errors) {
+          //save the errors in state to display
+          setErrors(res.data.errors);
+        } else {
+          //on success, we need to do 2 things
+          //  1. notify server throught socket.io to share this new movie with other clients
+          //  2. redirect (navigate) to the movie list
+          socket.emit("added_new_band", res.data);
+          //now that we are done with socket connection in this component, we must disconnect
+          socket.disconnect();
+          //  redirect
+          navigate("/bands/" + res.data._id);
+        }
+        
       })
       .catch((err) => {
         console.log(err);
         if(err.response.status === 401) {
           navigate('/login/');
         }
-        console.log(err.response.data.errors);
-        //err.respoonse is the body that you get in Postman
-        if (err.response.data.errors) {
-          //save the errors in state to display
-          setErrors(err.response.data.errors);
-        }
+        // console.log(err.response.data.errors);
+        // //err.respoonse is the body that you get in Postman
+        // if (err.response.data.errors) {
+        //   //save the errors in state to display
+        //   setErrors(err.response.data.errors);
+        // }
       });
   };
   return (

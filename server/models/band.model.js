@@ -16,6 +16,10 @@ const BandSchema = mongoose.Schema(
         "A short description of your band/ solo project is required",
       ],
     },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
   },
   { timestamps: true }
 );

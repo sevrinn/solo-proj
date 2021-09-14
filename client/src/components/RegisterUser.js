@@ -1,20 +1,10 @@
 import React, {useState} from "react";
+
 import axios from "axios";
-import { navigate, useNavigate } from "@reach/router";
+import { Link, navigate, useNavigate } from "@reach/router";
 
 const RegisterUser = (props) => {
-  // const [firstName, setFirstName] = useState("");
-  // const [fnErrors, setFnErrors] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [lnErrors, setLnErrors] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [unErrors, setUnErrors] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [emErrors, setEmErrors] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [pwErrors, setPwErrors] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-  // const [cpwErrors, setCpwErrors] = useState("");
+
   const [confirmReg, setConfirmReg] = useState("");
   const [errors, setErrors] = useState({});
   const[user, setUser] = useState({
@@ -40,13 +30,7 @@ const RegisterUser = (props) => {
 
   const register = (e) => {
     e.preventDefault();
-    //   const newUser = {
-    //   firstName: firstName,
-    //   lastName: lastName,
-    //   username: username,
-    //   email: email,
-    //   password: password,
-    // }
+    
     axios.post("http://localhost:8000/api/users/register",
     user,     //user state is already an object with the correct key/values
     {
@@ -65,7 +49,7 @@ const RegisterUser = (props) => {
         password: "",
         confirmPassword: "",
       })
-      setConfirmReg("Thanks for registering, you can now log in!");
+      setConfirmReg("Thanks for registering, you can now <Link>log in!");
       setErrors({}); //remember to reset errors state if it was successful
     })
     .catch((err)=> {
@@ -73,7 +57,7 @@ const RegisterUser = (props) => {
       console.log(err.response.data);
       console.log(err.response.data.errors);
       if (err.response.data.errors) {
-        setErrors(err.response.data.errors);
+        setErrors(err.response.data.message);
       }
     });
   };
@@ -160,6 +144,7 @@ const RegisterUser = (props) => {
           : null
         }
       <button className="p-2 mt-3 bg-gradient-to-b from-purple-300 to-purple-400 text-purple-900 rounded-xl" type="submit">Register</button>
+      <p>If you're already a member, Log In <Link to="/login/">HERE</Link></p>
     </form>
     </div>
     

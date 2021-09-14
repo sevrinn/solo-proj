@@ -35,6 +35,20 @@ const BandDetails = (props) => {
             <td className="font-bold">About: </td>
             <td>{band.description}</td>
           </tr>
+          <tr>
+            <td>
+              {
+                band.createdBy ?
+                (
+                  <div>
+                    Created by: {band.createdBy.username}
+                  </div>
+                )
+                : null
+              } 
+            </td>
+            
+          </tr>
         </tbody>
       </table>
       <button className="font-bold bg-purple-900 w-12 text-purple-200" onClick={(e)=> navigate(`/bands/${id}/edit`)}>Edit</button>
